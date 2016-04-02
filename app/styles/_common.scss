@@ -1,0 +1,31 @@
+@import 'constants';
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  color: $black-primary-color;
+}
+
+.container {
+  display: block;
+  margin: 0 auto;
+  width: 960px;
+}
+
+.hint-text {
+  color: $black-hint-color;
+}
+
+.clearfix {
+  &::before,
+  &::after {
+    content: ' ';
+    display: table;
+  }
+
+  &::after {
+    clear: both;
+  }
+}

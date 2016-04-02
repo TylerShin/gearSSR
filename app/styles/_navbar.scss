@@ -1,0 +1,34 @@
+.header-container {
+  background-color: #388e3c;
+}
+
+
+.navbar-container {
+  height: 4rem;
+}
+
+.navbar-item {
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  height: 100%;
+  line-height: 4rem;
+  padding: 0 18px;
+  text-decoration: none;
+
+  &:hover {
+    background-color: #2e7d32;
+  }
+
+  &.active {
+    background-color: #2e7d32;
+  }
+}
+
+.menu-left {
+  float: left;
+}
+
+.menu-right {
+  float: right;
+}
