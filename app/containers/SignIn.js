@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { signIn } from 'actions/auth';
-import Rdialog from '../components/Rdialog';
+import Rdialog from '../components/Rdialog/Rdialog';
 
 
 class SignIn extends Component {

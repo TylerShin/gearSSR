@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
-import Rdialog from '../components/Rdialog';
+import Rdialog from '../components/Rdialog/Rdialog';
 // Import Action Creators
 import { signUp } from 'actions/auth';
 
@@ -55,7 +55,7 @@ class SignUp extends Component {
           </div>
           <div className="modal-footer clearfix">
             <button
-              onClick={this.handleClose}
+              onClick={closeFunc}
               className="g-flat-button"
               type="button"
             >취소
