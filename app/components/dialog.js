@@ -2,18 +2,27 @@ import React, { Component, PropTypes } from 'react';
 
 class RDialog extends Component {
   render() {
-  	/********
-  		To Do
-			Add animation Logic if want
-  	********/
+    const { isOpen, closeFunc } = this.props;
+    let activeState = false;
+
+    if (isOpen) {
+      activeState = true;
+    } else {
+      activeState = false;
+    }
+
+    /**
+
+    To Do
+    Add animation Logic if want
+
+    **/
     return (
       <div className="RDialog-wrapper">
-	      <div className="RDialog-backdrop">
-
-	      </div>
-	      <div className="RDialog-modal-wrapper">
-					{ this.props.children }
-	      </div>
+        <div className="RDialog-backdrop" onClick={closeFunc}></div>
+        <div className="RDialog-modal-wrapper">
+          { this.props.children }
+        </div>
       </div>
     );
   }
