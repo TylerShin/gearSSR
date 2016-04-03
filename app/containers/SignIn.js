@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { signIn } from 'actions/auth';
+import Rdialog from '../components/Rdialog';
 
 
 class SignIn extends Component {
@@ -22,7 +23,7 @@ class SignIn extends Component {
     const { isOpen, closeFunc } = this.props;
 
     return (
-      <div visible={isOpen} onClose={closeFunc} height={248}>
+      <Rdialog isOpen={isOpen} closeFunc={closeFunc} height={248}>
         <div className="modal-header">
           로그인
         </div>
@@ -49,7 +50,7 @@ class SignIn extends Component {
             <button className="g-flat-button" type="submit">로그인</button>
           </div>
         </form>
-      </div>
+      </Rdialog>
     );
   }
 }
