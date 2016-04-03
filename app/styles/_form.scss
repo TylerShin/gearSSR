@@ -1,0 +1,10 @@
+.g-input {
+  border: 0;
+  border-bottom: 1px solid $black-hint-color;
+  height: 3rem;
+  width: 100%;
+
+  &:focus {
+    outline: none;
+  }
+}

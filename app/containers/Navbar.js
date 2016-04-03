@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import SignIn from './SignIn';
-import _ from 'lodash';
+import SignUp from './SignUp';
 
 class Navbar extends Component {
   constructor(props) {
@@ -85,6 +85,7 @@ class Navbar extends Component {
             <li className="navbar-item" onClick={this.toggleSignInModal}>로그인</li>
           </div>
           <SignIn isOpen={isSignInOpen} closeFunc={this.toggleSignInModal} />
+          <SignUp isOpen={isSignUpOpen} closeFunc={this.toggleSignUpModal} />
         </div>
       </div>
     );

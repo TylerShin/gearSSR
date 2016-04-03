@@ -1,33 +1,32 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { signIn } from 'actions/auth';
 import Rdialog from '../components/Rdialog';
+// Import Action Creators
+import { signUp } from 'actions/auth';
 
-
-class SignIn extends Component {
+class SignUp extends Component {
   constructor(props) {
     super(props);
-
-    this.handleLogin = this.handleLogin.bind(this);
+    this.handleSignUp = this.handleSignUp.bind(this);
   }
 
-  handleLogin(e) {
+  handleSignUp(e) {
     e.preventDefault();
     const email = this.refs.email.value;
     const password = this.refs.password.value;
+    const passwordConfirmation = this.refs.passwordConfirmation.value;
 
-    this.props.signIn(email, password);
+    this.props.signUp(email, password, passwordConfirmation);
   }
 
   render() {
     const { isOpen, closeFunc } = this.props;
-
     return (
-      <Rdialog isOpen={isOpen} closeFunc={closeFunc} height={248}>
+      <Rdialog isOpen={isOpen} closeFunc={closeFunc}>
         <div className="modal-header">
-          로그인
+          회원가입
         </div>
-        <form onSubmit={this.handleLogin}>
+        <form onSubmit={this.handleSignUp}>
           <div className="modal-body">
             <div>
               <input
@@ -45,9 +44,23 @@ class SignIn extends Component {
                 className="g-input"
               />
             </div>
+            <div>
+              <input
+                type="password"
+                ref="passwordConfirmation"
+                placeholder="PASSWORD CONFIRAMTION 암호확인"
+                className="g-input"
+              />
+            </div>
           </div>
           <div className="modal-footer clearfix">
-            <button className="g-flat-button" type="submit">로그인</button>
+            <button
+              onClick={this.handleClose}
+              className="g-flat-button"
+              type="button"
+            >취소
+            </button>
+            <button className="g-flat-button" type="submit">제출</button>
           </div>
         </form>
       </Rdialog>
@@ -55,16 +68,15 @@ class SignIn extends Component {
   }
 }
 
-SignIn.propTypes = {
-  signIn: PropTypes.func.isRequired,
+SignUp.propTypes = {
+  signUp: PropTypes.func.isRequired,
   isOpen: PropTypes.bool.isRequired,
   closeFunc: PropTypes.func.isRequired,
 };
-
 
 function mapStateToProps() {
   return {};
 }
 
-export { SignIn };
-export default connect(mapStateToProps, { signIn })(SignIn);
+export { SignUp };
+export default connect(mapStateToProps, { signUp })(SignUp);
