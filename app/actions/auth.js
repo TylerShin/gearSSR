@@ -1,4 +1,3 @@
-import { CALL_API } from 'middleware/api';
 import axios from 'axios';
 import config from 'config';
 // Constants
@@ -13,6 +12,13 @@ export function saveLocalStorage(auth) {
   }
 }
 
+export function saveCurrentUserStore(user) {
+  return {
+    type: SIGN_IN,
+    user,
+  };
+}
+
 export function signIn(email, password) {
   return dispatch =>
     axios.post(`${config.API_BASE_URL}/api/login`, {
@@ -20,36 +26,26 @@ export function signIn(email, password) {
       password
     })
     .then((res) => {
-      console.log(res);
       saveLocalStorage(res.data);
+      dispatch(saveCurrentUserStore(res.data));
     })
     .catch((res) => {
-      alert(res.data);
-    })
-  // {
-  //   [CALL_API]: {
-  //     method: 'post',
-  //     body: {
-  //       email,
-  //       password,
-  //     },
-  //     path: '/api/login',
-  //     successType: SIGN_IN,
-  //   }
-  // };
+      alert(res.data.error);
+    });
 }
 
 export function signUp(email, password, passwordConfirmation) {
-  return {
-    [CALL_API]: {
-      method: 'post',
-      body: {
-        email,
-        password,
-        passwordConfirmation
-      },
-      path: '/api/signUp',
-      successType: SIGN_IN,
-    }
-  };
+  return dispatch =>
+    axios.post(`${config.API_BASE_URL}/api/signUp`, {
+      email,
+      password,
+      passwordConfirmation
+    })
+    .then((res) => {
+      saveLocalStorage(res.data);
+      dispatch(saveCurrentUserStore(res.data));
+    })
+    .catch((res) => {
+      alert(res.data.error);
+    });
 }

@@ -3,9 +3,9 @@ import * as ActionType from 'actions/auth';
 function authReducer(state = {}, action) {
   switch (action.type) {
     case ActionType.SIGN_IN:
-      ActionType.saveLocalStorage(action.response);
+      ActionType.saveLocalStorage(action.user);
       return {
-        currentUser: action.response
+        currentUser: action.user
       };
 
     default:
